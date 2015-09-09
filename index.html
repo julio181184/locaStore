@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <title> learnin to use localStorage </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+    <script>
+    var ctr = localStorage.length;   
+    function saveValue(){
+        var box = document.getElementById("text-box1");
+        var val = box.value;
+        localStorage.setItem("user-input"+ctr,val);
+        writeToP();
+        ctr++;
+    }  
+    function writeToP(){
+        var p = document.getElementById("saved-values");
+        p.innerHTML="";
+        for (var st in localStorage)
+        p.innerHTML += st + ": " + localStorage.getItem(st) + "<br>";
+        
+    }
+    
+    function clearP(){
+        console.log("debug");
+        localStorage.clear();
+        p = document.getElementById("saved-values");
+        p.innerHTML="";
+        ctr = 0;
+        
+        
+    }
+        
+       
+    </script>
+    
+    </head>
+    <body>
+        <input type="text" id="text-box1"/>
+        <button onclick="saveValue();">Save</button>
+        <button onclick="clearP();">Clear</button>
+        <p id="saved-values"></p>
+    </body>   
+</html> 
